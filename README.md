@@ -13,20 +13,18 @@ A module of [Riru](https://github.com/RikkaApps/Riru). Allow specific applicatio
 
 
 * Add package to whitelist  
-  Edit file `/data/misc/riru/modules/clipboard_whitelist/packages.list` and add package name direct which you want
+  Edit file `/data/misc/clipboard/whitelist.list` and add package name direct which you want.  
+  Split multiple packages with newline(\\n)
   
 * Check module injected  
-  Open terminal and type
   ```bash
   getprop sys.clipboard.whitelist
   ```
 
 ## Source
 
-
 https://github.com/Kr328/Riru-ClipboardWhitelist
-  
-  
+
 ## Feedback
 
 Telegram Group [Kr328 Riru Modules](https://t.me/kr328_riru_modules)
