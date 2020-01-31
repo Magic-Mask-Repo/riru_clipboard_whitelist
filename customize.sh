@@ -69,9 +69,9 @@ TARGET="$RIRU_PATH/modules/$MODULE_NAME"
 [[ ! -f "$RIRU_PATH/api_version" ]] && abort "! Please Install Riru - Core v19 or above"
 VERSION=$(cat "$RIRU_PATH/api_version")
 ui_print "- Riru API version is $VERSION"
+[[ "$VERSION" -ge 4 ]] || abort "! Please Install Riru - Core v19 or above"
 
 # Check Arch
-[[ "$VERSION" -ge 4 ]] || abort "! Please Install Riru - Core v19 or above"
 if [[ "$ARCH" != "arm" && "$ARCH" != "arm64" ]]; then
   abort "! Unsupported platform: $ARCH"
 else
