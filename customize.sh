@@ -65,51 +65,43 @@ MODULE_NAME="clipboard_whitelist"
 DATA_PATH="/data/misc/clipboard"
 TARGET="$RIRU_PATH/modules/$MODULE_NAME"
 
-check_riru_version() {
-  [[ ! -f "$RIRU_PATH/api_version" ]] && abort "! Please Install Riru - Core v19 or above"
-  VERSION=$(cat "$RIRU_PATH/api_version")
-  ui_print "- Riru API version is $VERSION"
-  [[ "$VERSION" -ge 4 ]] || abort "! Please Install Riru - Core v19 or above"
-}
+# Check Riru Version
+[[ ! -f "$RIRU_PATH/api_version" ]] && abort "! Please Install Riru - Core v19 or above"
+VERSION=$(cat "$RIRU_PATH/api_version")
+ui_print "- Riru API version is $VERSION"
 
-check_architecture() {
-  if [[ "$ARCH" != "arm" && "$ARCH" != "arm64" ]]; then
-    abort "! Unsupported platform: $ARCH"
-  else
-    ui_print "- Device platform: $ARCH"
-  fi
-}
+# Check Arch
+[[ "$VERSION" -ge 4 ]] || abort "! Please Install Riru - Core v19 or above"
+if [[ "$ARCH" != "arm" && "$ARCH" != "arm64" ]]; then
+  abort "! Unsupported platform: $ARCH"
+else
+  ui_print "- Device platform: $ARCH"
+fi
 
-check_system_api_version() {
-  if [[ "$API" -lt "28" ]];then
-    ui_print "Unsupported api version ${API}"
-    abort "This module only for Android 10+"
-  fi
-}
+# Check System API Level
+if [[ "$API" -lt "29" ]];then
+  ui_print "Unsupported api version ${API}"
+  abort "This module only for Android 10+"
+fi
 
-check_architecture
-check_riru_version
-
-ui_print "- Extracting arm/arm64 libraries & dex"
-unzip -o "$ZIPFILE" 'system/*' -d $MODPATH >&2
-rm "$MODPATH/system/placeholder"
-
+# Remove 64-bit library
 if [[ "$IS64BIT" = false ]]; then
   ui_print "- Removing 64-bit libraries"
   rm -rf "$MODPATH/system/lib64"
 fi
 
-ui_print "- Extracting extra files"
-unzip -o "$ZIPFILE" 'data/*' -d "$TMPDIR" >&2
-
+# Setup Riru Module
 [[ -d "$TARGET" ]] || mkdir -p "$TARGET" || abort "! Can't mkdir -p $TARGET"
-cp -af "$TMPDIR/data/." "$TARGET" || abort "! Can't cp -af $TMPDIR$TARGET/. $TARGET"
-ui_print "- Files copied"
-  
+rm -rf "$TARGET"
+mv "$MODPATH/data" "$TARGET" || abort "! Can't setup riru module"
+ui_print "- Riru setup"
+
+# Create whitelist template
 ui_print "- Create whitelist.list"
 mkdir -p "$DATA_PATH"
 touch "$DATA_PATH/whitelist.list"
 
+# Set permission
 ui_print "- Set permissions"
 set_perm_recursive $MODPATH 0    0    0755 0644
-set_perm_recursive $DATA_PATH  1000 1000 0755 0644 u:object_r:system_data_file:s0
+set_perm_recursive $DATA_PATH  1000 1000 0700 0600 u:object_r:system_data_file:s0
