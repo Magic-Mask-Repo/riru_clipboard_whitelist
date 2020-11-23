@@ -15,7 +15,7 @@ Allowing apps to access the clipboard in the background on Android 10.
 
 ## Usage
 
-1. Install [Riru](https://github.com/RikkaApps/Riru)
+1. Install [Riru-Core](https://github.com/RikkaApps/Riru)
 
 2. Install [Riru-ClipboardWhitelist](https://github.com/Kr328/Riru-ClipboardWhitelist)
 
