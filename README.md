@@ -1,30 +1,31 @@
 # Riru - Clipboard Whitelist
 
-A module of [Riru](https://github.com/RikkaApps/Riru). Allow specific application access clipboard in background on Android 10.
+A module of [Riru](https://github.com/RikkaApps/Riru). Allowing apps to access the clipboard in the background on Android 10.
 
 ## Requirements
 
-* [Riru](https://github.com/RikkaApps/Riru) > 19 installed.
-* Android 10
+* [Riru](https://github.com/RikkaApps/Riru) > 22.0 installed.
+* Android 10+
 
 
+## Feature
 
-## Configure
+Allowing apps to access the clipboard in the background on Android 10. 
 
 
-* Add package to whitelist  
-  Edit file `/data/misc/clipboard/whitelist.list` and add package name direct which you want.  
-  One package name per line
-  
-* Check module injected  
-  ```bash
-  getprop sys.clipboard.whitelist
-  ```
+## Usage
+
+1. Install [Riru](https://github.com/RikkaApps/Riru)
+
+2. Install [Riru-ClipboardWhitelist](https://github.com/Kr328/Riru-ClipboardWhitelist)
+
+3. Reboot
+
+4. Open **Clibpboard** app and add apps to whitelist
+
 
 ## Source
 
 https://github.com/Kr328/Riru-ClipboardWhitelist
 
-## Feedback
 
-Telegram Group [Kr328 Riru Modules](https://t.me/kr328_riru_modules)
