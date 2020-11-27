@@ -1,6 +1,6 @@
 id=riru_clipboard_whitelist
 name=Riru - Clipboard Whitelist
-version=v5
-versionCode=5
+version=v6
+versionCode=6
 author=Kr328
 description=A module of Riru. Add clipboard whitelist to Android 10.
