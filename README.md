@@ -4,13 +4,13 @@ A module of [Riru](https://github.com/RikkaApps/Riru). Allowing apps to access t
 
 ## Requirements
 
-* [Riru](https://github.com/RikkaApps/Riru) > 22.0 installed.
+* [Riru](https://github.com/RikkaApps/Riru) >= 25.0 installed.
 * Android 10+
 
 
 ## Feature
 
-Allowing apps to access the clipboard in the background on Android 10. 
+Allowing apps to access the clipboard in the background on Android 10.
 
 
 ## Usage
@@ -26,6 +26,6 @@ Allowing apps to access the clipboard in the background on Android 10.
 
 ## Source
 
-https://github.com/Kr328/Riru-ClipboardWhitelist
+See also https://github.com/Kr328/Riru-ClipboardWhitelist
 
 
